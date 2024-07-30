@@ -30,14 +30,14 @@ jobs:
 
     - name: Test with pytest
       env:
-        PYTHONPATH: ./src
+        PYTHONPATH: ${{ github.workspace }}/src
       run: |
         pip install pytest
         pytest
 
     - name: Code Coverage
       env:
-        PYTHONPATH: ./src
+        PYTHONPATH: ${{ github.workspace }}/src
       run: |
         pip install coverage
         coverage run -m pytest
@@ -50,7 +50,7 @@ jobs:
 
     - name: Integration Testing
       env:
-        PYTHONPATH: ./src
+        PYTHONPATH: ${{ github.workspace }}/src
       run: |
         # Add integration test steps here
         pytest tests/integration
