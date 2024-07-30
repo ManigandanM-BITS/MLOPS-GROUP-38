@@ -1,8 +1,15 @@
-# tests/test_main.py
+"""
+This module contains tests for the model training code.
+"""
 
-from main import add
+from src.model import load_data
 
-def test_add():
-    assert add(1, 2) == 3
-    assert add(0, 0) == 0
-    assert add(-1, 1) == 0
+def test_load_data():
+    """Test the load_data function."""
+    data, target = load_data()
+    assert data is not None, "Data should not be None"
+    assert target is not None, "Target should not be None"
+    assert len(data) == len(target), "Data and Target should be of the same length"
+
+if __name__ == "__main__":
+    test_load_data()
