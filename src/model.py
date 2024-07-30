@@ -14,11 +14,11 @@ def load_data():
 
 def train_model():
     """Train a RandomForest model on the Iris dataset."""
-    X, y = load_data()
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    x_data, y_data = load_data()
+    x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.2, random_state=42)
     model = RandomForestClassifier()
-    model.fit(X_train, y_train)
-    accuracy = model.score(X_test, y_test)
+    model.fit(x_train, y_train)
+    accuracy = model.score(x_test, y_test)
     print(f"Model accuracy: {accuracy}")
     joblib.dump(model, 'model.joblib')
 

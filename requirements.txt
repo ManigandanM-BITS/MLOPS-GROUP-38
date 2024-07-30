@@ -1,4 +1,6 @@
-pylint
-pytest
 scikit-learn
 joblib
+pytest
+pylint
+coverage
+bandit

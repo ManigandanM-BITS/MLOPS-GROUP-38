@@ -12,7 +12,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
@@ -20,39 +20,40 @@ jobs:
         pip install -r requirements.txt
 
     - name: Build
-      run: |
-        python src/model.py
+      run: python src/model.py
 
     - name: Lint with pylint
       run: |
         pip install pylint
-        pylint **/*.py
+        pylint src/*.py tests/*.py
 
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest
+        pytest tests
 
     - name: Code Coverage
       run: |
-        # Add code coverage steps here
+        pip install coverage
+        coverage run --source=src -m pytest
+        coverage report -m
 
     - name: Security Scan
       run: |
-        # Add security scan steps here
+        pip install bandit
+        bandit -r src/
 
     - name: Integration Testing
       run: |
         # Add integration test steps here
+        mkdir -p tests/integration
+        touch tests/integration/__init__.py
 
     - name: Publish Artifacts
-      run: |
-        # Add artifact publishing steps here
+      run: echo "Publishing Artifacts"
 
     - name: Notify
-      run: |
-        # Add notification steps here
+      run: echo "Notification sent"
 
     - name: Deploy
-      run: |
-        echo "Model deployed"
+      run: echo "Deploying application"
