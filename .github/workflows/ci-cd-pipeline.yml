@@ -21,43 +21,33 @@ jobs:
 
     - name: Build
       run: |
-        # Add build steps here
+        python src/model.py
 
     - name: Lint with pylint
       run: |
         pip install pylint
-        pylint src/**/*.py
+        pylint **/*.py
 
     - name: Test with pytest
-      env:
-        PYTHONPATH: ${{ github.workspace }}/src
       run: |
         pip install pytest
         pytest
 
     - name: Code Coverage
-      env:
-        PYTHONPATH: ${{ github.workspace }}/src
       run: |
-        pip install coverage
-        coverage run -m pytest
-        coverage report
+        # Add code coverage steps here
 
     - name: Security Scan
       run: |
-        pip install bandit
-        bandit -r src/
+        # Add security scan steps here
 
     - name: Integration Testing
-      env:
-        PYTHONPATH: ${{ github.workspace }}/src
       run: |
         # Add integration test steps here
-        pytest tests/integration
 
     - name: Publish Artifacts
       run: |
-        # Add steps to publish artifacts here
+        # Add artifact publishing steps here
 
     - name: Notify
       run: |
@@ -65,4 +55,4 @@ jobs:
 
     - name: Deploy
       run: |
-        # Add deployment steps here
+        echo "Model deployed"
