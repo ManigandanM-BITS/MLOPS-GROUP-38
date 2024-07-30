@@ -1,4 +1,4 @@
 pylint
 pytest
-coverage
-bandit
+scikit-learn
+joblib
