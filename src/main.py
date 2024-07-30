@@ -1,5 +1,5 @@
 """
-This module contains a simple add function.
+This module contains a simple add function - updated version.
 """
 
 def add(a, b):
