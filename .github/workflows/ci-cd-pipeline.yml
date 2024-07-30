@@ -29,11 +29,15 @@ jobs:
         pylint src/**/*.py
 
     - name: Test with pytest
+      env:
+        PYTHONPATH: ./src
       run: |
         pip install pytest
         pytest
 
     - name: Code Coverage
+      env:
+        PYTHONPATH: ./src
       run: |
         pip install coverage
         coverage run -m pytest
@@ -45,6 +49,8 @@ jobs:
         bandit -r src/
 
     - name: Integration Testing
+      env:
+        PYTHONPATH: ./src
       run: |
         # Add integration test steps here
         pytest tests/integration
