@@ -1,5 +1,5 @@
 """
-This module trains a simple machine learning model and saves it..
+This module trains a simple machine learning model and saves it.
 """
 
 from sklearn.datasets import load_iris

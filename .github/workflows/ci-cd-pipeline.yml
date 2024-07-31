@@ -5,55 +5,42 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
-
+        python-version: 3.x
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Build
-      run: python src/model.py
-
     - name: Lint with pylint
       run: |
         pip install pylint
         pylint src/*.py tests/*.py
-
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest tests
-
+        pytest
     - name: Code Coverage
       run: |
         pip install coverage
-        coverage run --source=src -m pytest
+        coverage run -m pytest
         coverage report -m
-
     - name: Security Scan
       run: |
         pip install bandit
-        bandit -r src/
-
+        bandit -r src
     - name: Integration Testing
       run: |
-        # Add integration test steps here
-        mkdir -p tests/integration
-        touch tests/integration/__init__.py
-
+        echo "Integration tests go here."
     - name: Publish Artifacts
-      run: echo "Publishing Artifacts"
-
+      run: |
+        echo "Publish artifacts steps go here."
     - name: Notify
-      run: echo "Notification sent"
-
+      run: |
+        echo "Notify team members."
     - name: Deploy
-      run: echo "Deploying application"
+      run: |
+        echo "Deployment steps go here."

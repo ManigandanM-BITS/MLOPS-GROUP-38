@@ -2,7 +2,7 @@
 Test cases for main functions.
 """
 
-from src.model import add, train_model
+from model import add, train_model
 import os
 
 def test_add():
