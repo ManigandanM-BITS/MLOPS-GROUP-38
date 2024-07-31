@@ -15,7 +15,9 @@ def load_data():
 def train_model():
     """Train a RandomForest model on the Iris dataset."""
     x_data, y_data = load_data()
-    x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.2, random_state=42)
+    x_train, x_test, y_train, y_test = train_test_split(
+        x_data, y_data, test_size=0.2, random_state=42
+    )
     model = RandomForestClassifier()
     model.fit(x_train, y_train)
     accuracy = model.score(x_test, y_test)
