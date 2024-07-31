@@ -2,9 +2,8 @@
 Test module for testing the main module.
 """
 
-import os
 import unittest
-from src.main import add
+from src.main import add  # Corrected import
 
 class TestMain(unittest.TestCase):
     """

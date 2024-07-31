@@ -8,8 +8,7 @@ from sklearn.linear_model import LogisticRegression
 
 # Load the iris dataset
 iris = load_iris()
-X = iris.data
-y = iris.target
+X, y = iris.data, iris.target  # Corrected to tuple unpacking
 
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
