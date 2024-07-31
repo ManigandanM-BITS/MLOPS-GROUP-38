@@ -1,9 +1,20 @@
 """
-Main entry point for the program.
+Main module for demonstrating simple addition operation.
 """
 
-from model import add
+def add(a, b):
+    """
+    Add two numbers and return the result.
+    
+    Args:
+        a (int): The first number.
+        b (int): The second number.
+    
+    Returns:
+        int: The sum of the two numbers.
+    """
+    result = a + b
+    return result
 
 if __name__ == "__main__":
-    result = add(2, 3)
-    print(f"Result of add(2, 3): {result}")
+    print(add(2, 3))

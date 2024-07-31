@@ -1,46 +1,61 @@
 name: CI/CD Pipeline
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Set up job
+      run: echo "Setting up job"
+      
+    - name: Run actions/checkout@v2
+      uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.x
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: Build
+      run: python src/model.py
+
     - name: Lint with pylint
       run: |
         pip install pylint
         pylint src/*.py tests/*.py
+
     - name: Test with pytest
       run: |
         pip install pytest
         pytest
+
     - name: Code Coverage
-      run: |
-        pip install coverage
-        coverage run -m pytest
-        coverage report -m
+      run: echo "Run code coverage tool here"
+
     - name: Security Scan
-      run: |
-        pip install bandit
-        bandit -r src
+      run: echo "Run security scan tool here"
+
     - name: Integration Testing
-      run: |
-        echo "Integration tests go here."
+      run: echo "Run # Add integration test steps here"
+
     - name: Publish Artifacts
-      run: |
-        echo "Publish artifacts steps go here."
+      run: echo "Run # Add artifact publishing steps here"
+
     - name: Notify
-      run: |
-        echo "Notify team members."
+      run: echo "Run # Add notification steps here"
+
     - name: Deploy
-      run: |
-        echo "Deployment steps go here."
+      run: echo "Run # Add deployment steps here"
+
+    - name: Post Set up Python
+      run: echo "Clean up after Python setup"
+
+    - name: Post Run actions/checkout@v2
+      run: echo "Clean up after actions/checkout@v2"

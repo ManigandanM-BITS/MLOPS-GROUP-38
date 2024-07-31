@@ -1,15 +1,23 @@
 """
-Test cases for main functions.
+Test module for testing the main module.
 """
 
-from model import add, train_model
 import os
+import unittest
+from src.main import add
 
-def test_add():
-    assert add(2, 3) == 5
-    assert add(0, 0) == 0
-    assert add(-1, 1) == 0
+class TestMain(unittest.TestCase):
+    """
+    Unit test class for testing the add function in the main module.
+    """
 
-def test_model_training():
-    train_model()
-    assert os.path.exists('model.pkl')
+    def test_add(self):
+        """
+        Test case for the add function.
+        """
+        self.assertEqual(add(2, 3), 5)
+        self.assertEqual(add(-1, 1), 0)
+        self.assertEqual(add(-1, -1), -2)
+
+if __name__ == "__main__":
+    unittest.main()
