@@ -1,15 +1,15 @@
 """
-This module contains tests for the model training code.
+Test cases for main functions.
 """
 
-from src.model import load_data
+from src.model import add, train_model
+import os
 
-def test_load_data():
-    """Test the load_data function."""
-    data, target = load_data()
-    assert data is not None, "Data should not be None"
-    assert target is not None, "Target should not be None"
-    assert len(data) == len(target), "Data and Target should be of the same length"
+def test_add():
+    assert add(2, 3) == 5
+    assert add(0, 0) == 0
+    assert add(-1, 1) == 0
 
-if __name__ == "__main__":
-    test_load_data()
+def test_model_training():
+    train_model()
+    assert os.path.exists('model.pkl')

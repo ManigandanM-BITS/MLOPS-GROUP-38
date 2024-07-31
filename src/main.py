@@ -1,11 +1,9 @@
 """
-This module contains a simple add function - updated version.
+Main entry point for the program.
 """
 
-def add(a, b):
-    """Adds two numbers."""
-    return a + b
+from model import add
 
 if __name__ == "__main__":
-    RESULT = add(1, 2)
-    print(f"The result is {RESULT}")
+    result = add(2, 3)
+    print(f"Result of add(2, 3): {result}")
